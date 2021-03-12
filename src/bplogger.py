@@ -22,6 +22,32 @@ def create_logger_with_multiple_handlers():
     return service_logger
 
 
+def create_logger_family():
+    my_svc = logging.getLogger('my_svc')
+    sales_predictions = logging.getLogger('my_svc.sales_predictions')
+    sales_reports = logging.getLogger('my_svc.sales_reports')
+    iot_telemetry = logging.getLogger('my_svc.iot_telemetry')
+    data_access = logging.getLogger('my_svc.data_access')
+    return my_svc, sales_predictions, sales_reports, iot_telemetry, data_access
+
+
+def print_logger_relationships():
+    my_svc, sales_predictions, sales_reports, iot_telemetry, data_access = create_logger_family()
+    print(my_svc.parent.name)
+    print(type(logging.getLogger('root')))
+
+    if my_svc.parent is logging.getLogger(None):
+        print('The parent of my_svc is root.')
+    if sales_predictions.parent is logging.getLogger('my_svc'):
+        print('The parent of sales_predictions is my_svc.')
+    if sales_reports.parent is logging.getLogger('my_svc'):
+        print('The parent of sales_reports is my_svc.')
+    if iot_telemetry.parent is logging.getLogger('my_svc'):
+        print('The parent of iot_telemetry is my_svc.')
+    if data_access.parent is logging.getLogger('my_svc'):
+        print('The parent of data_access is my_svc.')
+
+
 def create_stdout_logger(level):
     '''
     Creates a logger with no parent and a stdout handler.
@@ -130,7 +156,7 @@ def convert_level(level):
         return logging.WARN
     else:
         return logging.NOTSET
-    
+
 
 if __name__ == '__main__':
     print(__name__)
@@ -141,6 +167,7 @@ if __name__ == '__main__':
     parser.add_argument('-s', '--stdout', help='Send logs to stdout using the stream handler.', action='store_true')
     parser.add_argument('-sl', '--stdout_level', help='Set logging level for stdout.')
     parser.add_argument('-pl', '--print_levels', help='Print all log levels and their numeric values.', action='store_true')
+    parser.add_argument('-m', '--multiple', help='Create multiple loggers.', action='store_true')
     args = parser.parse_args()
 
     if args.file:
@@ -153,3 +180,5 @@ if __name__ == '__main__':
         log_sample_messages(logger)
     if args.print_levels:
         print_logging_levels()
+    if args.multiple:
+        print_logger_relationships()
