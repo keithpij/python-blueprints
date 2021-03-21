@@ -1,5 +1,5 @@
 '''
-Python Logging Blueprint
+Python Logging Blueprint for Multiple Loggers.
 '''
 import argparse
 import logging
@@ -118,17 +118,6 @@ def add_file_handler(service_logger, log_file, level=None):
     service_logger.addHandler(file_handler)
 
 
-def print_logging_levels():
-    print('\n')
-    print('CRITICAL:', logging.CRITICAL)
-    print('INFO:', logging.INFO)
-    print('ERROR:', logging.ERROR)
-    print('WARN:', logging.WARN)
-    print('DEBUG:', logging.DEBUG)
-    print('NOTSET:', logging.NOTSET)
-    print('\n')
-
-
 def log_sample_messages(logger):
     '''
     Sends a sample message for each logging level.
@@ -140,24 +129,6 @@ def log_sample_messages(logger):
     logger.critical('This is a critical message.')
 
 
-def convert_level(level):
-    '''
-    Convert a string version of level to one of the constants.
-    '''
-    if level == '10' or level.lower() == 'debug':
-        return logging.DEBUG
-    elif level == '20' or level.lower() == 'info':
-        return logging.INFO
-    elif level == '30' or level.lower() == 'warn':
-        return logging.WARN
-    elif level == '40' or level.lower() == 'error':
-        return logging.ERROR
-    elif level == '50' or level.lower() == 'critical':
-        return logging.WARN
-    else:
-        return logging.NOTSET
-
-
 if __name__ == '__main__':
     print(__name__)
 
@@ -166,7 +137,6 @@ if __name__ == '__main__':
     parser.add_argument('-fl', '--file_level', help='Set logging level for the file.')
     parser.add_argument('-s', '--stdout', help='Send logs to stdout using the stream handler.', action='store_true')
     parser.add_argument('-sl', '--stdout_level', help='Set logging level for stdout.')
-    parser.add_argument('-pl', '--print_levels', help='Print all log levels and their numeric values.', action='store_true')
     parser.add_argument('-m', '--multiple', help='Create multiple loggers.', action='store_true')
     args = parser.parse_args()
 
