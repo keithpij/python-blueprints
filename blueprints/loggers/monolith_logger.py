@@ -6,11 +6,7 @@ import logging
 from logging.handlers import TimedRotatingFileHandler
 import sys
 
-
-def create_formatter():
-    format_string = '%(asctime)s — %(name)s — %(levelname)s — %(module)s:%(funcName)s:%(lineno)d — %(message)s'
-    formatter = logging.Formatter(format_string)
-    return formatter
+import logging_utils as lu
 
 
 def create_logger_family():
@@ -39,7 +35,7 @@ def print_logger_relationships():
         print('The parent of data_access is my_svc.')
 
 
-def create_stdout_logger(level):
+def create_stdout_logger(name, level):
     '''
     Creates a logger with no parent and a stdout handler.
     '''
@@ -105,19 +101,8 @@ def add_file_handler(service_logger, log_file, level=None):
     service_logger.addHandler(file_handler)
 
 
-def log_sample_messages(logger):
-    '''
-    Sends a sample message for each logging level.
-    '''
-    logger.debug('This is a debug message.')
-    logger.info('This is an info message')
-    logger.warning('This is a warning message.')
-    logger.error('This is an error message.')
-    logger.critical('This is a critical message.')
-
 
 if __name__ == '__main__':
-    print(__name__)
 
     parser = argparse.ArgumentParser()
     parser.add_argument('-f', '--file', help='Send logs to the specified file using a file handler.')
