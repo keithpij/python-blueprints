@@ -7,7 +7,7 @@ import logging
 import logging_utils as lu
 
 
-def create_basic_logger(level):
+def create_microservice_logger(level):
     '''
     Creates a logger with no parent and a stdout handler.
     '''
@@ -45,7 +45,7 @@ if __name__ == '__main__':
     if args.logging_level:
         LEVEL = lu.convert_logging_level(args.logging_level)
         print('The current level is : ' + str(LEVEL))
-        LOGGER = create_basic_logger(LEVEL)
+        LOGGER = create_microservice_logger(LEVEL)
         lu.log_sample_messages(LOGGER)
     if args.print_handlers:
         lu.print_handlers(LOGGER)

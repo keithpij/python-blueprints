@@ -4,12 +4,11 @@ Python Logging Blueprint for Multiple Loggers.
 import argparse
 import logging
 from logging.handlers import TimedRotatingFileHandler
-import sys
 
 import logging_utils as lu
 
 
-def create_multi_handler_logger(stdout_level, file_level, log_file='debug_level.log'):
+def create_debug_logger(stdout_level, file_level, log_file='debug_level.log'):
     '''
     This function will set up a logger with two handlers. One handler for sending
     messages to stdout and another handler for sending messages to a file.
@@ -68,7 +67,7 @@ if __name__ == '__main__':
 
     print('The current file_level is : ' + str(FILE_LEVEL))
     print('The current stdout_level is : ' + str(STDOUT_LEVEL))
-    LOGGER = create_multi_handler_logger(STDOUT_LEVEL, FILE_LEVEL)
+    LOGGER = create_debug_logger(STDOUT_LEVEL, FILE_LEVEL)
     lu.log_sample_messages(LOGGER)
 
     if args.print_handlers:
