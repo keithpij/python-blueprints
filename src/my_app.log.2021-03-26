@@ -1,0 +1,5 @@
+2021-03-26 07:45:14,779 — my_service_name — DEBUG — multiple_handlers:log_sample_messages:47 — This is a debug message.
+2021-03-26 07:45:14,779 — my_service_name — INFO — multiple_handlers:log_sample_messages:48 — This is an info message
+2021-03-26 07:45:14,780 — my_service_name — WARNING — multiple_handlers:log_sample_messages:49 — This is a warning message.
+2021-03-26 07:45:14,780 — my_service_name — ERROR — multiple_handlers:log_sample_messages:50 — This is an error message.
+2021-03-26 07:45:14,780 — my_service_name — CRITICAL — multiple_handlers:log_sample_messages:51 — This is a critical message.

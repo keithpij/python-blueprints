@@ -6,66 +6,72 @@ import logging
 from logging.handlers import TimedRotatingFileHandler
 import sys
 
-
-format_string = '%(asctime)s — %(name)s — %(levelname)s — %(module)s:%(funcName)s:%(lineno)d — %(message)s'
-formatter = logging.Formatter(format_string)
+import logging_utils as lu
 
 
-def create_logger_with_multiple_handlers():
-    service_logger = logging.getLogger('my_service_name')
-    service_logger.setLevel(logging.NOTSET)
-    service_logger.parent = None
-    service_logger.propagate = False
-    log_file = "my_app.log"
-    add_stdout_handler(service_logger, logging.INFO)
-    add_file_handler(service_logger, log_file, logging.DEBUG)
-    return service_logger
-
-
-def add_stdout_handler(service_logger, level):
-    stdout_handler = logging.StreamHandler(sys.stdout)
-    stdout_handler.setFormatter(formatter)
-    stdout_handler.setLevel(level)
-    service_logger.addHandler(stdout_handler)
-
-
-def add_file_handler(service_logger, log_file, level):
-    file_handler = TimedRotatingFileHandler(log_file, when='midnight')
-    file_handler.setFormatter(formatter)
-    file_handler.setLevel(level)
-    service_logger.addHandler(file_handler)
-
-
-def log_sample_messages(logger):
+def create_multi_handler_logger(stdout_level, file_level, log_file='debug_level.log'):
     '''
-    Sends a sample message for each logging level.
+    This function will set up a logger with two handlers. One handler for sending
+    messages to stdout and another handler for sending messages to a file.
     '''
-    logger.debug('This is a debug message.')
-    logger.info('This is an info message')
-    logger.warning('This is a warning message.')
-    logger.error('This is an error message.')
-    logger.critical('This is a critical message.')
+    # Create the logger.
+    # Note - if the level of the logger is set to NOTSET then the handlers get to decide their
+    # logging level.
+    debug_logger = logging.getLogger('my_service_name')
+    debug_logger.setLevel(logging.NOTSET)
+    debug_logger.parent = None
+    debug_logger.propagate = False
+
+    # Create the formatter
+    my_formatter = lu.create_formatter()
+
+    # Create the handler and set the logging level.
+    stdout_handler = lu.create_stdout_handler(stdout_level)
+
+    # Create and add the formatter to the handler.
+    stdout_handler.setFormatter(my_formatter)
+
+    # Add the handler to the logger.
+    debug_logger.addHandler(stdout_handler)
+
+    # Setup the file handler to send messages to a file.
+    file_handler = lu.create_file_handler(file_level, log_file)
+    debug_logger.addHandler(file_handler)
+
+    return debug_logger
+
 
 
 if __name__ == '__main__':
     print(__name__)
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('-f', '--file', help='Send logs to the specified file using a file handler.')
-    parser.add_argument('-fl', '--file_level', help='Set logging level for the file.')
-    parser.add_argument('-s', '--stdout', help='Send logs to stdout using the stream handler.', action='store_true')
-    parser.add_argument('-sl', '--stdout_level', help='Set logging level for stdout.')
+    parser.add_argument('-fl', '--file_level', help='Set logging level for the file handler.')
+    parser.add_argument('-sl', '--stdout_level', help='Set logging level for stdout handler.')
+    parser.add_argument('-pl', '--print_levels',
+                        help='Print all log levels and their numeric values.',
+                        action='store_true')
+    parser.add_argument('-ph', '--print_handlers',
+                        help='Print all handlers within the logger that is created.',
+                        action='store_true')
     args = parser.parse_args()
 
-    if args.file:
-        level = convert_level(args.file_level)
-        logger = create_file_logger(args.file, level)
-        log_sample_messages(logger)
-    if args.stdout:
-        level = convert_level(args.stdout_level)
-        logger = create_stdout_logger(level)
-        log_sample_messages(logger)
+    if args.file_level:
+        FILE_LEVEL = lu.convert_logging_level(args.file_level)
+    else:
+        FILE_LEVEL = logging.NOTSET
+
+    if args.stdout_level:
+        STDOUT_LEVEL = lu.convert_logging_level(args.stdout_level)
+    else:
+        STDOUT_LEVEL = logging.NOTSET
+
+    print('The current file_level is : ' + str(FILE_LEVEL))
+    print('The current stdout_level is : ' + str(STDOUT_LEVEL))
+    LOGGER = create_multi_handler_logger(STDOUT_LEVEL, FILE_LEVEL)
+    lu.log_sample_messages(LOGGER)
+
+    if args.print_handlers:
+        lu.print_handlers(LOGGER)
     if args.print_levels:
-        print_logging_levels()
-    if args.multiple:
-        print_logger_relationships()
+        lu.print_logging_levels()

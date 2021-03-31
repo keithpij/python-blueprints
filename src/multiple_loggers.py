@@ -7,19 +7,10 @@ from logging.handlers import TimedRotatingFileHandler
 import sys
 
 
-format_string = '%(asctime)s — %(name)s — %(levelname)s — %(module)s:%(funcName)s:%(lineno)d — %(message)s'
-formatter = logging.Formatter(format_string)
-
-
-def create_logger_with_multiple_handlers():
-    service_logger = logging.getLogger('my_service_name')
-    service_logger.setLevel(logging.NOTSET)
-    service_logger.parent = None
-    service_logger.propagate = False
-    log_file = "my_app.log"
-    add_stdout_handler(service_logger, logging.INFO)
-    add_file_handler(service_logger, log_file, logging.DEBUG)
-    return service_logger
+def create_formatter():
+    format_string = '%(asctime)s — %(name)s — %(levelname)s — %(module)s:%(funcName)s:%(lineno)d — %(message)s'
+    formatter = logging.Formatter(format_string)
+    return formatter
 
 
 def create_logger_family():
@@ -62,12 +53,8 @@ def create_stdout_logger(level):
     my_handler = logging.StreamHandler(sys.stdout)
     my_handler.setLevel(level)
 
-    # Create the formatter.
-    format_string = '%(asctime)s — %(name)s — %(levelname)s — %(module)s:%(funcName)s:%(lineno)d — %(message)s'
-    my_formatter = logging.Formatter(format_string)
-
     # Add the formatter to the handler.
-    my_handler.setFormatter(my_formatter)
+    my_handler.setFormatter(create_formatter())
 
     # Add the handler to the logger.
     my_logger.addHandler(my_handler)
@@ -104,7 +91,7 @@ def create_file_logger(log_file, level):
 
 def add_stdout_handler(service_logger, level=None):
     stdout_handler = logging.StreamHandler(sys.stdout)
-    stdout_handler.setFormatter(formatter)
+    stdout_handler.setFormatter(create_formatter())
     if level is not None:
         stdout_handler.setLevel(level)
     service_logger.addHandler(stdout_handler)
@@ -112,7 +99,7 @@ def add_stdout_handler(service_logger, level=None):
 
 def add_file_handler(service_logger, log_file, level=None):
     file_handler = TimedRotatingFileHandler(log_file, when='midnight')
-    file_handler.setFormatter(formatter)
+    file_handler.setFormatter(create_formatter())
     if level is not None:
         file_handler.setLevel(level)
     service_logger.addHandler(file_handler)
