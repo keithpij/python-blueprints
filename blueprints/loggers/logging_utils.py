@@ -74,12 +74,36 @@ def print_handlers(logger):
         print(handler)
 
 
+def print_descendants(logger=None):
+    '''
+    This function will print all descendants of the passed in logger.
+    Setting logger=None will cause this function to start at the root since logging.getLogger(None)
+    returns the root logger.
+    '''
+    root_logger = logging.getLogger(logger)
+    print(root_logger)
+    for child_logger in root_logger.getChild(logger.name):
+        print(child_logger)
+
+
+def print_all_loggers():
+    '''
+    This function will print the root logger and all the loggers that have been created.
+    '''
+    loggers = [logging.getLogger()]  # get the root logger
+    loggers = loggers + [logging.getLogger(name) for name in logging.root.manager.loggerDict]
+    for logger in loggers:
+        print(logger)
+        print(logger.parent)
+        print('\n')
+
+
 def print_logging_levels():
     print('\n')
     print('CRITICAL:', logging.CRITICAL)
     print('INFO:', logging.INFO)
     print('ERROR:', logging.ERROR)
-    print('WARN:', logging.WARN)
+    print('WARNING:', logging.WARNING)
     print('DEBUG:', logging.DEBUG)
     print('NOTSET:', logging.NOTSET)
     print('\n')

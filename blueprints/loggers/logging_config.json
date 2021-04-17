@@ -1,0 +1,24 @@
+{
+    "parent": {
+        "name": "my_svc",
+        "level": "info"
+    },
+    "children": [
+        {
+            "name": "sales_predictions",
+            "level": "debug"
+        },
+        {
+            "name": "sales_reports",
+            "level": "info"
+        },
+        {
+            "name": "iot_telemtry",
+            "level": "info"
+        },
+        {
+            "name": "data_access",
+            "level": "info"
+        }
+    ]
+}
