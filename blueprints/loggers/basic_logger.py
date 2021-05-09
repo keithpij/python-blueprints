@@ -7,7 +7,7 @@ import logging
 from blueprints.loggers import logging_utils as lu
 
 
-def create_basic_logger(logger_name, logging_level, propagate_message=False):
+def create_basic_logger(logger_name, logging_level, propagate_message=True):
     '''
     Creates a logger with a StreamHandler that sends messages to stdout. The logging level of
     the logger itself is set to NOTSET. The logging level of the handler is set to the value

@@ -1,0 +1,4 @@
+azure-identity
+azure-mgmt-network>=16.0.0
+azure-mgmt-resource>=15.0.0
+azure-mgmt-servicebus==6.0.0
