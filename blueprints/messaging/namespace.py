@@ -1,3 +1,11 @@
+'''
+This module contains the Namespace class which calls Azure APIs related to the management of 
+Service Bus namespaces.
+The online documention for the API calls used in this module can be found here:
+
+https://azuresdkdocs.blob.core.windows.net/$web/python/azure-mgmt-servicebus/0.6.0/azure.mgmt.servicebus.operations.html
+
+'''
 import argparse
 import os
 
@@ -12,9 +20,10 @@ from dotenv import load_dotenv
 
 from blueprints.messaging.resource_group import Subscription
 from blueprints.messaging.resource_group import ResourceGroup
+from blueprints.messaging import utils
 
 
-class ServiceBus():
+class Namespace():
 
     def __init__(self, subscription, group):
         self.subscription = subscription
@@ -26,7 +35,12 @@ class ServiceBus():
             credential=self.credential,
             subscription_id=self.subscription.subscription_id)
 
-    def create_namespace(self, namespace_name, sku_name):
+    def get(self, namespace_name):
+        sb_client = self.get_service_bus_client()
+        sb_namespace = sb_client.namespaces.get(self.group.group_name, namespace_name)
+        return sb_namespace
+
+    def create(self, namespace_name, sku_name):
         '''
         This method will create a service bus namespace.
         '''
@@ -67,23 +81,36 @@ class ServiceBus():
         #    }
         #).result()
 
-        print("Create namespace:\n{}".format(namespace))
-
 
 if __name__ == '__main__':
     # Setup all the CLI arguments for this module.
     parser = argparse.ArgumentParser()
+    parser.add_argument('-g', '--group',
+                        help='Group name.')
+    parser.add_argument('-n', '--namespace',
+                        help='Namespace name.')
+    parser.add_argument('-s', '--sku',
+                        help='SKU associated with the namespace.')
     parser.add_argument('-c', '--create_namespace',
                         help='Create a Service Bus namespace.',
                         action='store_true')
-    parser.add_argument('-s', '--sku',
-                        help='SKU associated with the namespace.')
+    parser.add_argument('-i', '--print_namespace_info',
+                        help='Print namespace information.',
+                        action='store_true')
 
     # Parse what was passed in. This will also check the arguments for you and produce
     # a help message is something is wrong.
     args = parser.parse_args()
     if args.create_namespace:
         SUBSCRIPTION = Subscription()
-        GROUP = ResourceGroup(SUBSCRIPTION,'eastus_service_bus_blueprint')
-        SERVICE_BUS = ServiceBus(SUBSCRIPTION, GROUP)
-        SERVICE_BUS.create_namespace('blueprints-namespace', args.sku)
+        GROUP = ResourceGroup(SUBSCRIPTION,args.group)
+        NAMESPACE = Namespace(SUBSCRIPTION, GROUP)
+        NAMESPACE.create(args.namespace, args.sku)
+        print("{} created".format(args.namespace))
+
+    if args.print_namespace_info:
+        SUBSCRIPTION = Subscription()
+        GROUP = ResourceGroup(SUBSCRIPTION,args.group)
+        NAMESPACE = Namespace(SUBSCRIPTION, GROUP)
+        SB_NAMESPACE = NAMESPACE.get(args.namespace)
+        utils.print_object_info(SB_NAMESPACE)

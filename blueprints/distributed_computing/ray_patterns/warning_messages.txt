@@ -1,0 +1,59 @@
+(ray) Keiths-MacBook-Pro:ray_patterns keithpij$ python ray_sort.py -s
+/Users/keithpij/.pyenv/versions/ray/lib/python3.8/site-packages/ray/autoscaler/_private/cli_logger.py:57: FutureWarning: Not all Ray CLI dependencies were found. In Ray 1.4+, the Ray CLI, autoscaler, and dashboard will only be usable via `pip install 'ray[default]'`. Please update your install command.
+  warnings.warn(
+2021-06-04 09:29:46,333 INFO services.py:1267 -- View the Ray dashboard at http://127.0.0.1:8265
+Non-distrubuted execution time: 1.9651000499725342
+(raylet) /Users/keithpij/.pyenv/versions/ray/lib/python3.8/site-packages/ray/autoscaler/_private/cli_logger.py:57: FutureWarning: Not all Ray CLI dependencies were found. In Ray 1.4+, the Ray CLI, autoscaler, and dashboard will only be usable via `pip install 'ray[default]'`. Please update your install command.
+(raylet)   warnings.warn(
+(raylet) /Users/keithpij/.pyenv/versions/ray/lib/python3.8/site-packages/ray/autoscaler/_private/cli_logger.py:57: FutureWarning: Not all Ray CLI dependencies were found. In Ray 1.4+, the Ray CLI, autoscaler, and dashboard will only be usable via `pip install 'ray[default]'`. Please update your install command.
+(raylet)   warnings.warn(
+(raylet) /Users/keithpij/.pyenv/versions/ray/lib/python3.8/site-packages/ray/autoscaler/_private/cli_logger.py:57: FutureWarning: Not all Ray CLI dependencies were found. In Ray 1.4+, the Ray CLI, autoscaler, and dashboard will only be usable via `pip install 'ray[default]'`. Please update your install command.
+(raylet)   warnings.warn(
+(raylet) /Users/keithpij/.pyenv/versions/ray/lib/python3.8/site-packages/ray/autoscaler/_private/cli_logger.py:57: FutureWarning: Not all Ray CLI dependencies were found. In Ray 1.4+, the Ray CLI, autoscaler, and dashboard will only be usable via `pip install 'ray[default]'`. Please update your install command.
+(raylet)   warnings.warn(
+2021-06-04 09:29:54,315 WARNING worker.py:1115 -- WARNING: 12 PYTHON workers have been started on a node of the id: 1c6f7e28931b63989449e7beb0bdede94d11c60f7c2257511f19f3e4 and address: 192.168.1.20. This could be a result of using a large number of actors, or it could be a consequence of using nested tasks (see https://github.com/ray-project/ray/issues/3644) for some a discussion of workarounds.
+(raylet) /Users/keithpij/.pyenv/versions/ray/lib/python3.8/site-packages/ray/autoscaler/_private/cli_logger.py:57: FutureWarning: Not all Ray CLI dependencies were found. In Ray 1.4+, the Ray CLI, autoscaler, and dashboard will only be usable via `pip install 'ray[default]'`. Please update your install command.
+(raylet)   warnings.warn(
+(raylet) /Users/keithpij/.pyenv/versions/ray/lib/python3.8/site-packages/ray/autoscaler/_private/cli_logger.py:57: FutureWarning: Not all Ray CLI dependencies were found. In Ray 1.4+, the Ray CLI, autoscaler, and dashboard will only be usable via `pip install 'ray[default]'`. Please update your install command.
+(raylet)   warnings.warn(
+(raylet) /Users/keithpij/.pyenv/versions/ray/lib/python3.8/site-packages/ray/autoscaler/_private/cli_logger.py:57: FutureWarning: Not all Ray CLI dependencies were found. In Ray 1.4+, the Ray CLI, autoscaler, and dashboard will only be usable via `pip install 'ray[default]'`. Please update your install command.
+(raylet)   warnings.warn(
+(raylet) /Users/keithpij/.pyenv/versions/ray/lib/python3.8/site-packages/ray/autoscaler/_private/cli_logger.py:57: FutureWarning: Not all Ray CLI dependencies were found. In Ray 1.4+, the Ray CLI, autoscaler, and dashboard will only be usable via `pip install 'ray[default]'`. Please update your install command.
+(raylet)   warnings.warn(
+2021-06-04 09:29:56,936 WARNING worker.py:1115 -- WARNING: 16 PYTHON workers have been started on a node of the id: 1c6f7e28931b63989449e7beb0bdede94d11c60f7c2257511f19f3e4 and address: 192.168.1.20. This could be a result of using a large number of actors, or it could be a consequence of using nested tasks (see https://github.com/ray-project/ray/issues/3644) for some a discussion of workarounds.
+(raylet) /Users/keithpij/.pyenv/versions/ray/lib/python3.8/site-packages/ray/autoscaler/_private/cli_logger.py:57: FutureWarning: Not all Ray CLI dependencies were found. In Ray 1.4+, the Ray CLI, autoscaler, and dashboard will only be usable via `pip install 'ray[default]'`. Please update your install command.
+(raylet)   warnings.warn(
+(raylet) /Users/keithpij/.pyenv/versions/ray/lib/python3.8/site-packages/ray/autoscaler/_private/cli_logger.py:57: FutureWarning: Not all Ray CLI dependencies were found. In Ray 1.4+, the Ray CLI, autoscaler, and dashboard will only be usable via `pip install 'ray[default]'`. Please update your install command.
+(raylet)   warnings.warn(
+(raylet) /Users/keithpij/.pyenv/versions/ray/lib/python3.8/site-packages/ray/autoscaler/_private/cli_logger.py:57: FutureWarning: Not all Ray CLI dependencies were found. In Ray 1.4+, the Ray CLI, autoscaler, and dashboard will only be usable via `pip install 'ray[default]'`. Please update your install command.
+(raylet)   warnings.warn(
+(raylet) /Users/keithpij/.pyenv/versions/ray/lib/python3.8/site-packages/ray/autoscaler/_private/cli_logger.py:57: FutureWarning: Not all Ray CLI dependencies were found. In Ray 1.4+, the Ray CLI, autoscaler, and dashboard will only be usable via `pip install 'ray[default]'`. Please update your install command.
+(raylet)   warnings.warn(
+2021-06-04 09:29:58,809 WARNING worker.py:1115 -- WARNING: 20 PYTHON workers have been started on a node of the id: 1c6f7e28931b63989449e7beb0bdede94d11c60f7c2257511f19f3e4 and address: 192.168.1.20. This could be a result of using a large number of actors, or it could be a consequence of using nested tasks (see https://github.com/ray-project/ray/issues/3644) for some a discussion of workarounds.
+(raylet) /Users/keithpij/.pyenv/versions/ray/lib/python3.8/site-packages/ray/autoscaler/_private/cli_logger.py:57: FutureWarning: Not all Ray CLI dependencies were found. In Ray 1.4+, the Ray CLI, autoscaler, and dashboard will only be usable via `pip install 'ray[default]'`. Please update your install command.
+(raylet)   warnings.warn(
+(raylet) /Users/keithpij/.pyenv/versions/ray/lib/python3.8/site-packages/ray/autoscaler/_private/cli_logger.py:57: FutureWarning: Not all Ray CLI dependencies were found. In Ray 1.4+, the Ray CLI, autoscaler, and dashboard will only be usable via `pip install 'ray[default]'`. Please update your install command.
+(raylet)   warnings.warn(
+(raylet) /Users/keithpij/.pyenv/versions/ray/lib/python3.8/site-packages/ray/autoscaler/_private/cli_logger.py:57: FutureWarning: Not all Ray CLI dependencies were found. In Ray 1.4+, the Ray CLI, autoscaler, and dashboard will only be usable via `pip install 'ray[default]'`. Please update your install command.
+(raylet)   warnings.warn(
+(raylet) /Users/keithpij/.pyenv/versions/ray/lib/python3.8/site-packages/ray/autoscaler/_private/cli_logger.py:57: FutureWarning: Not all Ray CLI dependencies were found. In Ray 1.4+, the Ray CLI, autoscaler, and dashboard will only be usable via `pip install 'ray[default]'`. Please update your install command.
+(raylet)   warnings.warn(
+2021-06-04 09:30:01,339 WARNING worker.py:1115 -- WARNING: 24 PYTHON workers have been started on a node of the id: 1c6f7e28931b63989449e7beb0bdede94d11c60f7c2257511f19f3e4 and address: 192.168.1.20. This could be a result of using a large number of actors, or it could be a consequence of using nested tasks (see https://github.com/ray-project/ray/issues/3644) for some a discussion of workarounds.
+(raylet) /Users/keithpij/.pyenv/versions/ray/lib/python3.8/site-packages/ray/autoscaler/_private/cli_logger.py:57: FutureWarning: Not all Ray CLI dependencies were found. In Ray 1.4+, the Ray CLI, autoscaler, and dashboard will only be usable via `pip install 'ray[default]'`. Please update your install command.
+(raylet)   warnings.warn(
+(raylet) /Users/keithpij/.pyenv/versions/ray/lib/python3.8/site-packages/ray/autoscaler/_private/cli_logger.py:57: FutureWarning: Not all Ray CLI dependencies were found. In Ray 1.4+, the Ray CLI, autoscaler, and dashboard will only be usable via `pip install 'ray[default]'`. Please update your install command.
+(raylet)   warnings.warn(
+(raylet) /Users/keithpij/.pyenv/versions/ray/lib/python3.8/site-packages/ray/autoscaler/_private/cli_logger.py:57: FutureWarning: Not all Ray CLI dependencies were found. In Ray 1.4+, the Ray CLI, autoscaler, and dashboard will only be usable via `pip install 'ray[default]'`. Please update your install command.
+(raylet)   warnings.warn(
+(raylet) /Users/keithpij/.pyenv/versions/ray/lib/python3.8/site-packages/ray/autoscaler/_private/cli_logger.py:57: FutureWarning: Not all Ray CLI dependencies were found. In Ray 1.4+, the Ray CLI, autoscaler, and dashboard will only be usable via `pip install 'ray[default]'`. Please update your install command.
+(raylet)   warnings.warn(
+2021-06-04 09:30:03,304 WARNING worker.py:1115 -- WARNING: 28 PYTHON workers have been started on a node of the id: 1c6f7e28931b63989449e7beb0bdede94d11c60f7c2257511f19f3e4 and address: 192.168.1.20. This could be a result of using a large number of actors, or it could be a consequence of using nested tasks (see https://github.com/ray-project/ray/issues/3644) for some a discussion of workarounds.
+(raylet) /Users/keithpij/.pyenv/versions/ray/lib/python3.8/site-packages/ray/autoscaler/_private/cli_logger.py:57: FutureWarning: Not all Ray CLI dependencies were found. In Ray 1.4+, the Ray CLI, autoscaler, and dashboard will only be usable via `pip install 'ray[default]'`. Please update your install command.
+(raylet)   warnings.warn(
+(raylet) /Users/keithpij/.pyenv/versions/ray/lib/python3.8/site-packages/ray/autoscaler/_private/cli_logger.py:57: FutureWarning: Not all Ray CLI dependencies were found. In Ray 1.4+, the Ray CLI, autoscaler, and dashboard will only be usable via `pip install 'ray[default]'`. Please update your install command.
+(raylet)   warnings.warn(
+(raylet) /Users/keithpij/.pyenv/versions/ray/lib/python3.8/site-packages/ray/autoscaler/_private/cli_logger.py:57: FutureWarning: Not all Ray CLI dependencies were found. In Ray 1.4+, the Ray CLI, autoscaler, and dashboard will only be usable via `pip install 'ray[default]'`. Please update your install command.
+(raylet)   warnings.warn(
+(raylet) /Users/keithpij/.pyenv/versions/ray/lib/python3.8/site-packages/ray/autoscaler/_private/cli_logger.py:57: FutureWarning: Not all Ray CLI dependencies were found. In Ray 1.4+, the Ray CLI, autoscaler, and dashboard will only be usable via `pip install 'ray[default]'`. Please update your install command.
+(raylet)   warnings.warn(
+Distrubuted execution time: 18.99856209754944

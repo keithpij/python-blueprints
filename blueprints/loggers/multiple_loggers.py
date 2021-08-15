@@ -12,6 +12,22 @@ def create_multiple_loggers():
     """
     This function will create a parent logger with children loggers.
     The passed in parameters must be lists where the f
+
+    Creates a logger with a StreamHandler that sends messages to stdout. The logging level of
+    the logger itself is set to NOTSET. The logging level of the handler is set to the value
+    passed in via the logging_level parameter.
+
+    The logging level must numeric. Typically it is one of the contants found in the logging
+    module (ex. logging.INFO) but it can be any number. As an example, setting it to
+    logging.CRITICAL + 1 will turn off the handler.
+
+    Setting propagate_message to True will cause messages to be sent to parent loggers where
+    the messages will be sent to the parents handlers regardless of the level of the logger.
+    When this parameter is false the logger will behave like a root logger.
+
+    IMPORTANT: If the logger is set to NOTSET then the logger will propagate to the parent
+    regardless of how the propagate property is set.
+
     """
     logging_config = lu.get_logging_metadata('logging_config.json')
 

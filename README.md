@@ -17,5 +17,8 @@ pyenv virtualenv 3.8.5 onnx
 cd onnx
 pyenv local onnx
 
+pyenv virtualenv 3.8.5 ray
+pyenv shell ray
+
 ## To get a pylint config file with examples for all options.
 pylint --generate-rcfile > pylintrc_sample
